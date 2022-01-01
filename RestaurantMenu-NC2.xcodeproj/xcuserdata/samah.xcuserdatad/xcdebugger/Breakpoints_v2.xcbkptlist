@@ -14,8 +14,8 @@
             filePath = "RestaurantMenu-NC2/main.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "500"
-            endingLineNumber = "500"
+            startingLineNumber = "496"
+            endingLineNumber = "496"
             landmarkName = "getAllReservationFunc()"
             landmarkType = "9">
          </BreakpointContent>
@@ -30,9 +30,9 @@
             filePath = "RestaurantMenu-NC2/main.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "484"
-            endingLineNumber = "484"
-            landmarkName = "getAllReservationFunc()"
+            startingLineNumber = "480"
+            endingLineNumber = "480"
+            landmarkName = "makeReservation()"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>

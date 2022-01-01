@@ -444,10 +444,6 @@ func getAllCoffeeAndDessertMenu(_ CoffeeAndDessert_resurant_number:String){
     getMainMenu(user_name)
 }
 
-
-
-
-
 func makeReservation(){
     
     let allResturants  = ["Tamees 09", "Hide Out","Faris Breakfast","KABANA", "Dar Zaid","Meez","66 Cups","Brew 92","Caffeine Lab"]
@@ -504,8 +500,88 @@ func getAllReservationFunc(){
 }
 
 func getLetsChosen(){
-    getMainMenu(user_name)
+    print("\n⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕ Lets the chosen on us 🤩 ⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕\n")
+    let printLetsChosen : String = """
+       Please select from the following what the food you want :
+    1. Breakfast
+    2. Lunch and Dinner
+    3. Coffee and Desserts \n
+    Please enter your option:
+    """
+    print(printLetsChosen)
+    guard let userLetsChosen = readLine() else {
+        return
+    }
+    
+    switch userLetsChosen{
+    case "1" :
+        breakfastLetsChosen()
+    case "2" :
+        print("Sorry try it another time ☹️")
+        getMainMenu(user_name)
+    case "3" :
+        print("Sorry try it another time ☹️")
+        getMainMenu(user_name)
+    default:
+        print("Sorry you didn't choose ! :) ")
+        getMainMenu(user_name)
+       
+    }
+  
 }
+
+func breakfastLetsChosen(){
+    print("\n⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕ Breakfast 🤩 ⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕\n")
+    let printSuggestionsBreakfast : String = """
+       What the type of breakfast you prefer ?
+    1. Muqalqal , Foul , Chakshoka , etc.\n
+                       OR
+    \n2. Croissant , Frence Toast , Pancake , etc.
+    Please enter your option:
+    """
+    print(printSuggestionsBreakfast)
+
+    guard let userSuggestionsBreakfast = readLine() else {
+        return
+    }
+   
+    
+    if (userSuggestionsBreakfast == "1"){
+        print("You prefer a restaurant specialized in these meals only?")
+        print("Enter 1 for yes OR 2 for no ")
+        guard let userSuggestionsBreakfast2 = readLine() else {
+            return
+        }
+        switch userSuggestionsBreakfast2{
+        case "1" :
+            print("\n⁕⁕⁕⁕⁕⁕⁕⁕⁕ We suggest to you Tamees 09 restaurant 🤩 ⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕\n")
+            getMainMenu(user_name)
+        case "2" :
+            
+            print("\n⁕⁕⁕⁕⁕⁕ We suggest to you Faris Breakfast restaurant 🤩 ⁕⁕⁕⁕⁕⁕⁕\n")
+            getMainMenu(user_name)
+    
+        default:
+            print("Sorry you didn't choose ! :) ")
+            getMainMenu(user_name)
+           
+        }
+        
+    }
+    else if (userSuggestionsBreakfast == "2"){
+        
+        print("\n⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕ We suggest to you Hideout restaurant 🤩 ⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕\n")
+        getMainMenu(user_name)
+    }
+    else{
+        getMainMenu(user_name)
+    }
+    
+}
+
+
+
+
 
 
 struct reservation {
