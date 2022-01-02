@@ -7,20 +7,20 @@
 
 import Foundation
 class Restaurant {
-   var restaurant_name: String
-   var food_name_and_price = [String : Double]()
+   var restaurantName: String
+   var foodNameAndPrice = [String : Double]()
    var type:String
    
     
-    init(restaurant_name: String,food_name_and_price :[String: Double] ,type: String) {
-      self.restaurant_name = restaurant_name
-      self.food_name_and_price = food_name_and_price
+    init(restaurantName: String,foodNameAndPrice :[String: Double] ,type: String) {
+      self.restaurantName = restaurantName
+      self.foodNameAndPrice = foodNameAndPrice
         self.type = type
    }
 }
 var userReservation : [reservation] = []
 var allUserReservation: [String] = []
-var user_name : String = ""
+var userName : String = ""
 
 func printSeprator(){
     print("\n..\u{2665} __________________________________________________ \u{2665}..\n")
@@ -30,15 +30,15 @@ runMyApp()
 
 func runMyApp(){
     print("\n\n\t\t\t\tWelcome to Ristorante \u{2665} \n\nPlease enter your name: ")
-    user_name = readLine()!
-    getMainMenu(user_name)
+    userName = readLine()!
+    getMainMenu(userName)
 }
 
 
-func getMainMenu(_ username:String){
+func getMainMenu(_ userName:String){
    
     let printMainMenu : String = """
-        \nHi \(username) \u{2665} ..
+        \nHi \(userName) \u{2665} ..
         Please select from the following:
         1. View all Restaurants
         2. Make an Reservation
@@ -47,16 +47,16 @@ func getMainMenu(_ username:String){
         Please enter your option:
     """
     print(printMainMenu)
-    guard let user_option = readLine() else {
+    guard let userOption = readLine() else {
         return
     }
-    takeUserOption(user_option)
+    takeUserOption(userOption)
 }
 
 
-func takeUserOption(_ user_option:String){
+func takeUserOption(_ userOption:String){
  
-    switch user_option{
+    switch userOption{
     case "1" :
         getAllRestaurantsMenu()
     case "2" :
@@ -67,7 +67,7 @@ func takeUserOption(_ user_option:String){
         getLetsChosen()
     default:
         print("Sorry you didn't choose ! :) ")
-        getMainMenu(user_name)
+        getMainMenu(userName)
        
     }
 
@@ -82,11 +82,11 @@ func getAllRestaurantsMenu(){
         Please enter your option:
     """
     print(printMainMenu)
-    let  user_menu_option = readLine()
-    getAllRestaurantsFunc(user_menu_option!)
+    let  userMenuOption = readLine()
+    getAllRestaurantsFunc(userMenuOption!)
 }
-func getAllRestaurantsFunc(_ user_menu_option:String){
-    switch user_menu_option{
+func getAllRestaurantsFunc(_ userMenuOption:String){
+    switch userMenuOption{
     case "1" :
         getAllBreakfastRestaurant()
     case "2" :
@@ -96,7 +96,7 @@ func getAllRestaurantsFunc(_ user_menu_option:String){
   
     default:
         print("Sorry you didn't choose ! :) ")
-        getMainMenu(user_name)
+        getMainMenu(userName)
        
     }
 }
@@ -110,13 +110,13 @@ func getAllBreakfastRestaurant(){
     }
     printSeprator()
     print("Enter the number of resurant you want :")
-    let  breakfast_resurant_number = readLine()
-    getBreakfastRestaurantUserOption(breakfast_resurant_number!)
+    let  breakfastResurantNumber = readLine()
+    getBreakfastRestaurantUserOption(breakfastResurantNumber!)
 
     
 }
-func getBreakfastRestaurantUserOption(_ breakfast_resurant_number:String){
-    switch breakfast_resurant_number{
+func getBreakfastRestaurantUserOption(_ breakfastResurantNumber:String){
+    switch breakfastResurantNumber{
     case "1" :
         getBreakfastRestaurantsMenu("1")
     case "2" :
@@ -130,20 +130,20 @@ func getBreakfastRestaurantUserOption(_ breakfast_resurant_number:String){
     }
     
 }
-func getBreakfastRestaurantsMenu(_ breakfast_resurant_number:String){
+func getBreakfastRestaurantsMenu(_ breakfastResurantNumber:String){
     printSeprator()
-    if(breakfast_resurant_number == "1"){
+    if(breakfastResurantNumber == "1"){
         
         
         
-        let first_MC_menu = Restaurant(restaurant_name: "Tamees 09", food_name_and_price: ["Foul                " : 18.40,"Two cheese Shakshoka" : 29.90, "09 Chakshoka        " : 33.35,   "Muqalqal            " : 46.00, "Liver Plate         " : 40.25],type: "Main Courses")
-        print("\t\t\t.. \(first_MC_menu.restaurant_name) Restaurants Menu ..\n")
+        let firstMCMenu = Restaurant(restaurantName: "Tamees 09", foodNameAndPrice: ["Foul                " : 18.40,"Two cheese Shakshoka" : 29.90, "09 Chakshoka        " : 33.35,   "Muqalqal            " : 46.00, "Liver Plate         " : 40.25],type: "Main Courses")
+        print("\t\t\t.. \(firstMCMenu.restaurantName) Restaurants Menu ..\n")
    
       
-        let first_drink_menu = Restaurant(restaurant_name: "Tamees 09", food_name_and_price: [  "Karak Tea Pot       " : 26.40,"Red Tea Pot         " : 20.70,  "Karak Tea Cup       " : 5.75,  "Red Tea Cup         " :  5.75,  "Water               ": 3],type: "Drink")
+        let firstDrinkMenu = Restaurant(restaurantName: "Tamees 09", foodNameAndPrice: [  "Karak Tea Pot       " : 26.40,"Red Tea Pot         " : 20.70,  "Karak Tea Cup       " : 5.75,  "Red Tea Cup         " :  5.75,  "Water               ": 3],type: "Drink")
         var main_courses_index = 1
-        print(first_MC_menu.type)
-        for (key, value) in first_MC_menu.food_name_and_price {
+        print(firstMCMenu.type)
+        for (key, value) in firstMCMenu.foodNameAndPrice {
            
             print("\n\(main_courses_index): \(key) \t\t\t\t\t \(value) SR")
             
@@ -153,73 +153,73 @@ func getBreakfastRestaurantsMenu(_ breakfast_resurant_number:String){
         }
 
         printSeprator()
-        print(first_drink_menu.type)
-        var drink_index = 1
-        for (key, value) in first_drink_menu.food_name_and_price {
-            print("\n\(drink_index): \(key) \t\t\t\t\t \(value) SR")
-            drink_index += 1
+        print(firstDrinkMenu.type)
+        var drinkIndex = 1
+        for (key, value) in firstDrinkMenu.foodNameAndPrice {
+            print("\n\(drinkIndex): \(key) \t\t\t\t\t \(value) SR")
+            drinkIndex += 1
             
         }
 
     }
-    if(breakfast_resurant_number == "2"){
-      let second_MC_menu = Restaurant(restaurant_name: "Hide Out", food_name_and_price: ["EGG & Cheese Croissant   " : 33.00,"Crilled Cheese Croissant" : 24.00,"Classic Pancake          " : 28.00,"The Original Frence Toast" : 36.00,"Hideout Omelet             " : 27.00],type: "Main Courses")
-        print("\t\t\t.. \(second_MC_menu.restaurant_name) Restaurants Menu ..\n")
+    if(breakfastResurantNumber == "2"){
+      let secondMCMenu = Restaurant(restaurantName: "Hide Out", foodNameAndPrice: ["EGG & Cheese Croissant   " : 33.00,"Crilled Cheese Croissant" : 24.00,"Classic Pancake          " : 28.00,"The Original Frence Toast" : 36.00,"Hideout Omelet             " : 27.00],type: "Main Courses")
+        print("\t\t\t.. \(secondMCMenu.restaurantName) Restaurants Menu ..\n")
         
        
       
        
        
        
-        let second_drink_menu = Restaurant(restaurant_name: "Hide Out", food_name_and_price: [ "Karak Tea Pot           " : 26.00, "Red Tea Pot             " : 20.00,  "Karak Tea Cup           " : 5.00, "Red Tea Cup             " :  5.00, "Water                   " : 2.00],type: "Drink")
-        var main_courses_index = 1
-        print(second_MC_menu.type)
-        for (key, value) in second_MC_menu.food_name_and_price {
+        let secondDrinkMenu = Restaurant(restaurantName: "Hide Out", foodNameAndPrice: [ "Karak Tea Pot           " : 26.00, "Red Tea Pot             " : 20.00,  "Karak Tea Cup           " : 5.00, "Red Tea Cup             " :  5.00, "Water                   " : 2.00],type: "Drink")
+        var mainCoursesIndex = 1
+        print(secondMCMenu.type)
+        for (key, value) in secondMCMenu.foodNameAndPrice {
            
-            print("\n\(main_courses_index): \(key) \t\t\t\t\t \(value) SR")
+            print("\n\(mainCoursesIndex): \(key) \t\t\t\t\t \(value) SR")
             
            
-            main_courses_index += 1
+            mainCoursesIndex += 1
             
         }
 
         printSeprator()
-        print(second_drink_menu.type)
+        print(secondDrinkMenu.type)
         var drink_index = 1
-        for (key, value) in second_drink_menu.food_name_and_price {
+        for (key, value) in secondDrinkMenu.foodNameAndPrice {
             print("\n\(drink_index): \(key) \t\t\t\t\t \(value) SR")
             drink_index += 1
             
         }
     }
-    else if(breakfast_resurant_number == "3"){
-         let third_MC_menu = Restaurant(restaurant_name: "Faris Breakfast", food_name_and_price: ["Scrambled Eggs      ": 18.00, "Shakshoka           ": 24.00, "My Father's Masoub  ": 28.00, "Three Cheese        " : 36.00, "Nizak Egg           " : 42.00],type: "Main Courses")
-          print("\t\t\t.. \(third_MC_menu.restaurant_name) Restaurants Menu ..\n")
+    else if(breakfastResurantNumber == "3"){
+         let thirdMCMenu = Restaurant(restaurantName: "Faris Breakfast", foodNameAndPrice: ["Scrambled Eggs      ": 18.00, "Shakshoka           ": 24.00, "My Father's Masoub  ": 28.00, "Three Cheese        " : 36.00, "Nizak Egg           " : 42.00],type: "Main Courses")
+          print("\t\t\t.. \(thirdMCMenu.restaurantName) Restaurants Menu ..\n")
           
         
-          let third_drink_menu = Restaurant(restaurant_name: "Faris Breakfast", food_name_and_price: [ "Karak Tea Pot       " : 26.00, "Red Tea Pot         " : 24.00,  "Karak Tea Cup       " : 7.00,  "Red Tea Cup         " :  7.00,"Water               " : 2.00],type: "Drink")
-          var main_courses_index = 1
-          print(third_MC_menu.type)
-          for (key, value) in third_MC_menu.food_name_and_price {
+          let thirdDrinkMenu = Restaurant(restaurantName: "Faris Breakfast", foodNameAndPrice: [ "Karak Tea Pot       " : 26.00, "Red Tea Pot         " : 24.00,  "Karak Tea Cup       " : 7.00,  "Red Tea Cup         " :  7.00,"Water               " : 2.00],type: "Drink")
+          var mainCoursesIndex = 1
+          print(thirdMCMenu.type)
+          for (key, value) in thirdMCMenu.foodNameAndPrice {
              
-              print("\n\(main_courses_index): \(key) \t\t\t\t\t \(value) SR")
+              print("\n\(mainCoursesIndex): \(key) \t\t\t\t\t \(value) SR")
               
              
-              main_courses_index += 1
+              mainCoursesIndex += 1
               
           }
 
           printSeprator()
-          print(third_drink_menu.type)
-          var drink_index = 1
-          for (key, value) in third_drink_menu.food_name_and_price {
-              print("\n\(drink_index): \(key) \t\t\t\t\t \(value) SR")
-              drink_index += 1
+          print(thirdDrinkMenu.type)
+          var drinkIndex = 1
+          for (key, value) in thirdDrinkMenu.foodNameAndPrice {
+              print("\n\(drinkIndex): \(key) \t\t\t\t\t \(value) SR")
+              drinkIndex += 1
               
           }
     }
     
-    getMainMenu(user_name)
+    getMainMenu(userName)
   
 }
 
@@ -233,11 +233,11 @@ func getAllLunchAndDinnerRestaurant(){
     }
     printSeprator()
     print("Enter the number of resurant you want :")
-    let  lunchAndDinner_resurant_number = readLine()
-    getAllLunchAndDinnerRestaurantUserOption(lunchAndDinner_resurant_number!)
+    let  lunchAndDinnerResurantNumber = readLine()
+    getAllLunchAndDinnerRestaurantUserOption(lunchAndDinnerResurantNumber!)
 }
-func getAllLunchAndDinnerRestaurantUserOption(_ lunchAnd_dinner_number:String){
-    switch lunchAnd_dinner_number{
+func getAllLunchAndDinnerRestaurantUserOption(_ lunchAndDinnerResurantNumber:String){
+    switch lunchAndDinnerResurantNumber{
     case "1" :
         getAllLunchAndDinnerMenu("1")
     case "2" :
@@ -250,17 +250,17 @@ func getAllLunchAndDinnerRestaurantUserOption(_ lunchAnd_dinner_number:String){
         getAllRestaurantsMenu()
     }
 }
-func getAllLunchAndDinnerMenu(_ lunchAnd_dinner_number:String){
+func getAllLunchAndDinnerMenu(_ lunchAndDinnerNumber:String){
     printSeprator()
-    if(lunchAnd_dinner_number == "1"){
-        let first_MC_menu = Restaurant(restaurant_name: "KABANA", food_name_and_price: [ "Chicken Pizza       " : 74.00, "Pepperoni           " : 76.00,"Penne Arabiatta     " : 72.00, "Bolani Gandana      " : 46.00, "Shami Kebab         " : 118.00],type: "Main Courses")
-        print("\t\t\t.. \(first_MC_menu.restaurant_name) Restaurants Menu ..\n")
+    if(lunchAndDinnerNumber == "1"){
+        let first_MC_menu = Restaurant(restaurantName: "KABANA", foodNameAndPrice: [ "Chicken Pizza       " : 74.00, "Pepperoni           " : 76.00,"Penne Arabiatta     " : 72.00, "Bolani Gandana      " : 46.00, "Shami Kebab         " : 118.00],type: "Main Courses")
+        print("\t\t\t.. \(first_MC_menu.restaurantName) Restaurants Menu ..\n")
        
     
-        let first_drink_menu = Restaurant(restaurant_name: "KABANA", food_name_and_price: [ "Lilac               " : 28.00,"Orange              " : 24.00,"Pepsi/7up/diet Pepsi" : 9.00, "Lemon & Mint        " :  20.00,"Water               " : 7.00],type: "Drink")
+        let first_drink_menu = Restaurant(restaurantName: "KABANA", foodNameAndPrice: [ "Lilac               " : 28.00,"Orange              " : 24.00,"Pepsi/7up/diet Pepsi" : 9.00, "Lemon & Mint        " :  20.00,"Water               " : 7.00],type: "Drink")
         var main_courses_index = 1
         print(first_MC_menu.type)
-        for (key, value) in first_MC_menu.food_name_and_price {
+        for (key, value) in first_MC_menu.foodNameAndPrice {
            
             print("\n\(main_courses_index): \(key) \t\t\t\t\t \(value) SR")
             
@@ -272,22 +272,22 @@ func getAllLunchAndDinnerMenu(_ lunchAnd_dinner_number:String){
         printSeprator()
         print(first_drink_menu.type)
         var drink_index = 1
-        for (key, value) in first_drink_menu.food_name_and_price {
+        for (key, value) in first_drink_menu.foodNameAndPrice {
             print("\n\(drink_index): \(key) \t\t\t\t\t \(value) SR")
             drink_index += 1
             
         }
 
     }
-    if(lunchAnd_dinner_number == "2"){
-      let second_MC_menu = Restaurant(restaurant_name: "Dar Zaid", food_name_and_price: ["Alforno Pasta       " : 86.00, "Lobster Pasta       " : 172.00,  "Bresaola Pizza      " : 92.00,"Agnello             " : 142.00,"Salmon              " : 124.00],type: "Main Courses")
-        print("\t\t\t.. \(second_MC_menu.restaurant_name) Restaurants Menu ..\n")
+    if(lunchAndDinnerNumber == "2"){
+      let second_MC_menu = Restaurant(restaurantName: "Dar Zaid", foodNameAndPrice: ["Alforno Pasta       " : 86.00, "Lobster Pasta       " : 172.00,  "Bresaola Pizza      " : 92.00,"Agnello             " : 142.00,"Salmon              " : 124.00],type: "Main Courses")
+        print("\t\t\t.. \(second_MC_menu.restaurantName) Restaurants Menu ..\n")
       
 
-        let second_drink_menu = Restaurant(restaurant_name: "Dar Zaid", food_name_and_price: [  "Lilac               " : 28.00,"Orange               " : 24.00,"Pepsi/7up/diet Pepsi" : 9.00,"Lemon & Mint        " :  20.00, "Water               " : 7.00],type: "Drink")
+        let second_drink_menu = Restaurant(restaurantName: "Dar Zaid", foodNameAndPrice: [  "Lilac               " : 28.00,"Orange               " : 24.00,"Pepsi/7up/diet Pepsi" : 9.00,"Lemon & Mint        " :  20.00, "Water               " : 7.00],type: "Drink")
         var main_courses_index = 1
         print(second_MC_menu.type)
-        for (key, value) in second_MC_menu.food_name_and_price {
+        for (key, value) in second_MC_menu.foodNameAndPrice {
            
             print("\n\(main_courses_index): \(key) \t\t\t\t\t \(value) SR")
             
@@ -299,22 +299,22 @@ func getAllLunchAndDinnerMenu(_ lunchAnd_dinner_number:String){
         printSeprator()
         print(second_drink_menu.type)
         var drink_index = 1
-        for (key, value) in second_drink_menu.food_name_and_price {
+        for (key, value) in second_drink_menu.foodNameAndPrice {
             print("\n\(drink_index): \(key) \t\t\t\t\t \(value) SR")
             drink_index += 1
             
         }
     }
-    else if(lunchAnd_dinner_number == "3"){
+    else if(lunchAndDinnerNumber == "3"){
        
    
-        let third_MC_menu = Restaurant(restaurant_name: "Meez", food_name_and_price: ["Cranberry Vine Rolls" : 34.00,"Shawerma Ribs Fries " : 65.00,"Shrimps Barak       " : 69.00,"Khoshari            " : 45.00, "Crispy Chicken      ": 42.00],type: "Main Courses")
-          print("\t\t\t.. \(third_MC_menu.restaurant_name) Restaurants Menu ..\n")
+        let third_MC_menu = Restaurant(restaurantName: "Meez", foodNameAndPrice: ["Cranberry Vine Rolls" : 34.00,"Shawerma Ribs Fries " : 65.00,"Shrimps Barak       " : 69.00,"Khoshari            " : 45.00, "Crispy Chicken      ": 42.00],type: "Main Courses")
+          print("\t\t\t.. \(third_MC_menu.restaurantName) Restaurants Menu ..\n")
           
-          let third_drink_menu = Restaurant(restaurant_name: "Meez", food_name_and_price: ["Lilac               " : 28.00,  "Orange              " : 24.00,"Pepsi/7up/diet Pepsi" : 9.00,  "Lemon & Min         " :  20.00, "Water               " : 7.00],type: "Drink")
+          let third_drink_menu = Restaurant(restaurantName: "Meez", foodNameAndPrice: ["Lilac               " : 28.00,  "Orange              " : 24.00,"Pepsi/7up/diet Pepsi" : 9.00,  "Lemon & Min         " :  20.00, "Water               " : 7.00],type: "Drink")
           var main_courses_index = 1
           print(third_MC_menu.type)
-          for (key, value) in third_MC_menu.food_name_and_price {
+          for (key, value) in third_MC_menu.foodNameAndPrice {
              
               print("\n\(main_courses_index): \(key) \t\t\t\t\t \(value) SR")
               
@@ -326,13 +326,13 @@ func getAllLunchAndDinnerMenu(_ lunchAnd_dinner_number:String){
           printSeprator()
           print(third_drink_menu.type)
           var drink_index = 1
-          for (key, value) in third_drink_menu.food_name_and_price {
+          for (key, value) in third_drink_menu.foodNameAndPrice {
               print("\n\(drink_index): \(key) \t\t\t\t\t \(value) SR")
               drink_index += 1
               
           }
     }
-    getMainMenu(user_name)
+    getMainMenu(userName)
 }
 
 func getAllCoffeeAndDessertRestaurant(){
@@ -365,12 +365,12 @@ func getAllCoffeeAndDessertMenu(_ CoffeeAndDessert_resurant_number:String){
     
     printSeprator()
     if(CoffeeAndDessert_resurant_number == "1"){
-            let first_MC_menu = Restaurant(restaurant_name: "66 Cups", food_name_and_price: ["Caramel Tiramisu    " : 19.00,"Huniani             " : 22.00,"Chocolate Coconut   " : 25.00,"Mango Cheesecake    " : 18.00,"Raspberry Cheesecake" : 23.00],type: "Dessert")
-        print("\t\t\t.. \(first_MC_menu.restaurant_name) Restaurants Menu ..\n")
-         let first_drink_menu = Restaurant(restaurant_name: "66 Cups", food_name_and_price: [ "66 Latte            " : 22.00, "Flat White          " : 18.00, "Espresso            " : 8.00,  "Cortado             " :  16.00, "Hot Chocolate       " : 14.00],type: "Coffee")
+            let first_MC_menu = Restaurant(restaurantName: "66 Cups", foodNameAndPrice: ["Caramel Tiramisu    " : 19.00,"Huniani             " : 22.00,"Chocolate Coconut   " : 25.00,"Mango Cheesecake    " : 18.00,"Raspberry Cheesecake" : 23.00],type: "Dessert")
+        print("\t\t\t.. \(first_MC_menu.restaurantName) Restaurants Menu ..\n")
+         let first_drink_menu = Restaurant(restaurantName: "66 Cups", foodNameAndPrice: [ "66 Latte            " : 22.00, "Flat White          " : 18.00, "Espresso            " : 8.00,  "Cortado             " :  16.00, "Hot Chocolate       " : 14.00],type: "Coffee")
         var main_courses_index = 1
         print(first_MC_menu.type)
-        for (key, value) in first_MC_menu.food_name_and_price {
+        for (key, value) in first_MC_menu.foodNameAndPrice {
            
             print("\n\(main_courses_index): \(key) \t\t\t\t\t \(value) SR")
             
@@ -382,7 +382,7 @@ func getAllCoffeeAndDessertMenu(_ CoffeeAndDessert_resurant_number:String){
         printSeprator()
         print(first_drink_menu.type)
         var drink_index = 1
-        for (key, value) in first_drink_menu.food_name_and_price {
+        for (key, value) in first_drink_menu.foodNameAndPrice {
             print("\n\(drink_index): \(key) \t\t\t\t\t \(value) SR")
             drink_index += 1
             
@@ -391,13 +391,13 @@ func getAllCoffeeAndDessertMenu(_ CoffeeAndDessert_resurant_number:String){
     }
     if(CoffeeAndDessert_resurant_number == "2"){
       
-      let second_MC_menu = Restaurant(restaurant_name: "Brew 92", food_name_and_price: [ "Banana & Nutella             " : 29.00,"Salted Cow With Whipped Cream" : 36.00,"Fried Chicken & Waffle       " : 37.00],type: "Dessert")
-        print("\t\t\t.. \(second_MC_menu.restaurant_name) Restaurants Menu ..\n")
+      let second_MC_menu = Restaurant(restaurantName: "Brew 92", foodNameAndPrice: [ "Banana & Nutella             " : 29.00,"Salted Cow With Whipped Cream" : 36.00,"Fried Chicken & Waffle       " : 37.00],type: "Dessert")
+        print("\t\t\t.. \(second_MC_menu.restaurantName) Restaurants Menu ..\n")
        
-        let second_drink_menu = Restaurant(restaurant_name: "Brew 92", food_name_and_price: ["Latte                        " : 19.00,"Flat White                   " : 16.00, "Espresso                     " : 15.00,"Spanish Latte                " :  20.00, "Hot Chocolate                " : 14.00],type: "Coffee")
+        let second_drink_menu = Restaurant(restaurantName: "Brew 92", foodNameAndPrice: ["Latte                        " : 19.00,"Flat White                   " : 16.00, "Espresso                     " : 15.00,"Spanish Latte                " :  20.00, "Hot Chocolate                " : 14.00],type: "Coffee")
         var main_courses_index = 1
         print(second_MC_menu.type)
-        for (key, value) in second_MC_menu.food_name_and_price {
+        for (key, value) in second_MC_menu.foodNameAndPrice {
            
             print("\n\(main_courses_index): \(key) \t\t\t\t \(value) SR")
             
@@ -409,7 +409,7 @@ func getAllCoffeeAndDessertMenu(_ CoffeeAndDessert_resurant_number:String){
         printSeprator()
         print(second_drink_menu.type)
         var drink_index = 1
-        for (key, value) in second_drink_menu.food_name_and_price {
+        for (key, value) in second_drink_menu.foodNameAndPrice {
             print("\n\(drink_index): \(key) \t\t\t\t \(value) SR")
             drink_index += 1
             
@@ -417,13 +417,13 @@ func getAllCoffeeAndDessertMenu(_ CoffeeAndDessert_resurant_number:String){
     }
     else if(CoffeeAndDessert_resurant_number == "3"){
         
-        let third_MC_menu = Restaurant(restaurant_name: "Caffeine Lab", food_name_and_price: ["Blueberry Waffle             " : 34.00,"American Pancake             " : 30.00,"Cinnamon Chocolate Waffle    " : 25.00,"Carrot & Date hot cake       " : 28.00,"Mixed Berries Waffle         " : 42.00],type: "Desset")
-          print("\t\t\t.. \(third_MC_menu.restaurant_name) Restaurants Menu ..\n")
+        let third_MC_menu = Restaurant(restaurantName: "Caffeine Lab", foodNameAndPrice: ["Blueberry Waffle             " : 34.00,"American Pancake             " : 30.00,"Cinnamon Chocolate Waffle    " : 25.00,"Carrot & Date hot cake       " : 28.00,"Mixed Berries Waffle         " : 42.00],type: "Desset")
+          print("\t\t\t.. \(third_MC_menu.restaurantName) Restaurants Menu ..\n")
          
-          let third_drink_menu = Restaurant(restaurant_name: "Caffeine Lab", food_name_and_price: ["Latte                        " : 28.00,"Flat White                   " : 24.00,"Espresso                     ": 9.00,"Cortado                      " :  20.00,"Hot Chocolate                " : 7.00],type: "Coffee")
+          let third_drink_menu = Restaurant(restaurantName: "Caffeine Lab", foodNameAndPrice: ["Latte                        " : 28.00,"Flat White                   " : 24.00,"Espresso                     ": 9.00,"Cortado                      " :  20.00,"Hot Chocolate                " : 7.00],type: "Coffee")
           var main_courses_index = 1
           print(third_MC_menu.type)
-          for (key, value) in third_MC_menu.food_name_and_price {
+          for (key, value) in third_MC_menu.foodNameAndPrice {
              
               print("\n\(main_courses_index): \(key) \t\t\t\t \(value) SR")
               
@@ -435,13 +435,13 @@ func getAllCoffeeAndDessertMenu(_ CoffeeAndDessert_resurant_number:String){
           printSeprator()
           print(third_drink_menu.type)
           var drink_index = 1
-          for (key, value) in third_drink_menu.food_name_and_price {
+          for (key, value) in third_drink_menu.foodNameAndPrice {
               print("\n\(drink_index): \(key) \t\t\t\t \(value) SR")
               drink_index += 1
               
           }
     }
-    getMainMenu(user_name)
+    getMainMenu(userName)
 }
 
 func makeReservation(){
@@ -475,7 +475,7 @@ func makeReservation(){
     
     userReservation.append(reservation)
 
-    getMainMenu(user_name)
+    getMainMenu(userName)
 }
 func getAllReservationFunc(){
     if(userReservation.isEmpty){
@@ -495,7 +495,7 @@ func getAllReservationFunc(){
        
 }
   
-    getMainMenu(user_name)
+    getMainMenu(userName)
     
 }
 
@@ -518,13 +518,13 @@ func getLetsChosen(){
         breakfastLetsChosen()
     case "2" :
         print("Sorry try it another time ☹️")
-        getMainMenu(user_name)
+        getMainMenu(userName)
     case "3" :
         print("Sorry try it another time ☹️")
-        getMainMenu(user_name)
+        getMainMenu(userName)
     default:
         print("Sorry you didn't choose ! :) ")
-        getMainMenu(user_name)
+        getMainMenu(userName)
        
     }
   
@@ -555,15 +555,15 @@ func breakfastLetsChosen(){
         switch userSuggestionsBreakfast2{
         case "1" :
             print("\n⁕⁕⁕⁕⁕⁕⁕⁕⁕ We suggest to you Tamees 09 restaurant 🤩 ⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕\n")
-            getMainMenu(user_name)
+            getMainMenu(userName)
         case "2" :
             
             print("\n⁕⁕⁕⁕⁕⁕ We suggest to you Faris Breakfast restaurant 🤩 ⁕⁕⁕⁕⁕⁕⁕\n")
-            getMainMenu(user_name)
+            getMainMenu(userName)
     
         default:
             print("Sorry you didn't choose ! :) ")
-            getMainMenu(user_name)
+            getMainMenu(userName)
            
         }
         
@@ -571,10 +571,10 @@ func breakfastLetsChosen(){
     else if (userSuggestionsBreakfast == "2"){
         
         print("\n⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕ We suggest to you Hideout restaurant 🤩 ⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕⁕\n")
-        getMainMenu(user_name)
+        getMainMenu(userName)
     }
     else{
-        getMainMenu(user_name)
+        getMainMenu(userName)
     }
     
 }
